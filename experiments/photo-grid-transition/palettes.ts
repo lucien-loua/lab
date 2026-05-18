@@ -1,8 +1,8 @@
-export type Palette = {
+export interface Palette {
+  gradient: string;
   id: string;
   name: string;
-  gradient: string;
-};
+}
 
 export const PALETTES: Palette[] = [
   {

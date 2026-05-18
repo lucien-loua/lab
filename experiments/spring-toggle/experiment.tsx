@@ -1,14 +1,14 @@
 "use client";
 
+import { motion, type Transition, useReducedMotion } from "motion/react";
 import { useState } from "react";
-import { motion, useReducedMotion, type Transition } from "motion/react";
-import { Switch } from "@base-ui/react/switch";
-import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Switch } from "@/components/ui/switch";
 
-type Preset = {
-  name: string;
+interface Preset {
   config: { type: "spring"; stiffness: number; damping: number; mass: number };
-};
+  name: string;
+}
 
 const PRESETS: Preset[] = [
   {
@@ -27,7 +27,7 @@ const PRESETS: Preset[] = [
 
 export default function SpringToggleExperiment() {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
       {PRESETS.map((preset) => (
         <PresetCard key={preset.name} preset={preset} />
       ))}
@@ -41,33 +41,20 @@ function PresetCard({ preset }: { preset: Preset }) {
   const transition: Transition = reduce ? { duration: 0 } : preset.config;
 
   return (
-    <div className="flex flex-col gap-3 rounded-lg border bg-card p-4">
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-xs">{preset.name}</span>
-        <Switch.Root
-          checked={on}
-          onCheckedChange={setOn}
-          className={cn(
-            "relative inline-flex h-7 w-12 cursor-pointer items-center rounded-full border transition-colors",
-            on ? "bg-foreground" : "bg-muted",
-          )}
-        >
-          <motion.span
-            layout
-            transition={transition}
-            className={cn(
-              "absolute size-5 rounded-full bg-background shadow",
-              on ? "right-1" : "left-1",
-            )}
-            whileTap={reduce ? undefined : { scale: 0.9 }}
-          />
-        </Switch.Root>
-      </div>
-      <pre className="overflow-x-auto rounded bg-muted/60 p-2 font-mono text-[10px] leading-tight text-muted-foreground">
-        {`stiffness: ${preset.config.stiffness}
+    <Card size="sm">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="font-mono text-xs">{preset.name}</CardTitle>
+        <motion.div layout transition={transition}>
+          <Switch checked={on} onCheckedChange={setOn} />
+        </motion.div>
+      </CardHeader>
+      <CardContent>
+        <pre className="overflow-x-auto rounded bg-muted/60 p-2 font-mono text-[10px] text-muted-foreground leading-tight">
+          {`stiffness: ${preset.config.stiffness}
 damping:   ${preset.config.damping}
 mass:      ${preset.config.mass}`}
-      </pre>
-    </div>
+        </pre>
+      </CardContent>
+    </Card>
   );
 }

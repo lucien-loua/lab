@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ],
+  "overrides": [
+    {
+      "includes": ["components/ui/**", "components/theme-provider.tsx"],
+      "linter": {
+        "rules": {
+          "performance": { "noNamespaceImport": "off" },
+          "a11y": { "noLabelWithoutControl": "off" },
+          "style": { "useConsistentTypeDefinitions": "off" }
+        }
+      }
+    }
+  ]
+}

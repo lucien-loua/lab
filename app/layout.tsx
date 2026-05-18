@@ -1,5 +1,5 @@
-import { ViewTransition } from "react";
 import { Geist_Mono, Inter } from "next/font/google";
+import { ViewTransition } from "react";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -24,14 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      suppressHydrationWarning
       className={cn(
         "antialiased",
         fontMono.variable,
         "font-sans",
-        inter.variable,
+        inter.variable
       )}
+      lang="en"
+      suppressHydrationWarning
     >
       <body>
         <ThemeProvider>

@@ -1,14 +1,15 @@
+import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import { Badge } from "@/components/ui/badge";
 import type { Experiment } from "@/lib/experiments";
 
 export function BackLink({ href = "/" }: { href?: string }) {
   return (
     <Link
+      className="inline-flex items-center gap-1.5 text-muted-foreground text-xs transition-colors hover:text-foreground"
       href={href}
-      className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
     >
-      <ArrowLeft className="size-3.5" weight="bold" /> back
+      <ArrowLeftIcon className="size-3.5" weight="bold" /> back
     </Link>
   );
 }
@@ -30,27 +31,24 @@ export function ExperimentShell({
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <BackLink />
       <header className="mt-6 mb-10">
-        <h1 className="text-xl font-medium tracking-tight">
+        <h1 className="font-medium text-xl tracking-tight">
           {experiment.title}
         </h1>
-        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-          <time dateTime={experiment.date} className="font-mono">
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-muted-foreground text-xs">
+          <time className="font-mono" dateTime={experiment.date}>
             {dateLabel}
           </time>
           {experiment.tags.length > 0 ? (
             <span className="flex flex-wrap gap-1.5">
               {experiment.tags.map((t) => (
-                <span
-                  key={t}
-                  className="rounded bg-muted px-1.5 py-0.5 font-mono text-[10px]"
-                >
+                <Badge className="font-mono" key={t} variant="secondary">
                   {t}
-                </span>
+                </Badge>
               ))}
             </span>
           ) : null}
         </div>
-        <p className="mt-4 max-w-prose text-sm text-muted-foreground">
+        <p className="mt-4 max-w-prose text-muted-foreground text-sm">
           {experiment.summary}
         </p>
       </header>

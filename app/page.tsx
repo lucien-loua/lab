@@ -1,5 +1,5 @@
-import { getAllExperiments } from "@/lib/experiments";
 import { ExperimentCard } from "@/components/lab/experiment-card";
+import { getAllExperiments } from "@/lib/experiments";
 
 export default async function HomePage() {
   const experiments = await getAllExperiments();
@@ -7,8 +7,8 @@ export default async function HomePage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
       <header className="mb-12 sm:mb-16">
-        <h1 className="font-mono text-lg font-medium tracking-tight">lab</h1>
-        <p className="mt-2 max-w-prose text-sm text-muted-foreground">
+        <h1 className="font-medium font-mono text-lg tracking-tight">lab</h1>
+        <p className="mt-2 max-w-prose text-muted-foreground text-sm">
           A sketchbook for UI experiments by{" "}
           <a
             className="underline underline-offset-4 hover:text-foreground"
@@ -22,10 +22,10 @@ export default async function HomePage() {
 
       <section aria-label="Experiments" className="flex flex-col gap-2">
         {experiments.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No experiments yet.</p>
+          <p className="text-muted-foreground text-sm">No experiments yet.</p>
         ) : (
           experiments.map((exp) => (
-            <ExperimentCard key={exp.slug} experiment={exp} />
+            <ExperimentCard experiment={exp} key={exp.slug} />
           ))
         )}
       </section>

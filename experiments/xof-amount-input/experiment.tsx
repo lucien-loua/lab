@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
 const groupFormatter = new Intl.NumberFormat("fr-SN", {
@@ -30,14 +33,17 @@ export default function XofAmountInputExperiment() {
   const numeric = useMemo(() => (raw === "" ? null : Number(raw)), [raw]);
   const formatted = useMemo(
     () => (numeric === null ? "" : groupFormatter.format(numeric)),
-    [numeric],
+    [numeric]
   );
 
-  useEffect(() => {
-    return () => {
-      if (typingTimer.current) clearTimeout(typingTimer.current);
-    };
-  }, []);
+  useEffect(
+    () => () => {
+      if (typingTimer.current) {
+        clearTimeout(typingTimer.current);
+      }
+    },
+    []
+  );
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     const next = digitsOnly(e.target.value);
@@ -45,7 +51,9 @@ export default function XofAmountInputExperiment() {
     setError(false);
     setSuccess(false);
     setTyping(true);
-    if (typingTimer.current) clearTimeout(typingTimer.current);
+    if (typingTimer.current) {
+      clearTimeout(typingTimer.current);
+    }
     typingTimer.current = setTimeout(() => setTyping(false), 250);
   }
 
@@ -61,53 +69,53 @@ export default function XofAmountInputExperiment() {
 
   const digitCount = raw.length;
 
+  let activeAnimate: Record<string, number | number[]> | undefined;
+  if (reduce) {
+    activeAnimate = undefined;
+  } else if (error) {
+    activeAnimate = { x: [0, -6, 6, -4, 4, 0] };
+  } else if (success) {
+    activeAnimate = { scale: [1, 1.02, 1] };
+  } else {
+    activeAnimate = { x: 0, scale: 1 };
+  }
+
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-4">
-      <label
-        htmlFor="xof-amount"
-        className="text-xs font-medium text-muted-foreground"
-      >
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
+      <Label className="text-muted-foreground text-xs" htmlFor="xof-amount">
         Amount
-      </label>
+      </Label>
 
       <motion.div
-        animate={
-          reduce
-            ? undefined
-            : error
-              ? { x: [0, -6, 6, -4, 4, 0] }
-              : success
-                ? { scale: [1, 1.02, 1] }
-                : { x: 0, scale: 1 }
-        }
-        transition={{ duration: 0.4 }}
+        animate={activeAnimate}
         className={cn(
-          "flex items-center gap-2 rounded-lg border bg-card px-4 py-3 transition-colors",
+          "flex items-center gap-2 rounded-lg border bg-card px-2 py-1 transition-colors",
           error && "border-destructive",
-          success && "border-emerald-500",
+          success && "border-emerald-500"
         )}
+        transition={{ duration: 0.4 }}
       >
-        <input
+        <Input
+          aria-describedby="xof-help"
+          aria-invalid={error}
+          autoComplete="off"
+          className="border-0 bg-transparent text-2xl tabular-nums shadow-none focus-visible:ring-0"
           id="xof-amount"
           inputMode="numeric"
-          autoComplete="off"
+          onChange={onChange}
           placeholder="0"
           value={formatted}
-          onChange={onChange}
-          aria-invalid={error}
-          aria-describedby="xof-help"
-          className="flex-1 bg-transparent text-2xl tabular-nums outline-none placeholder:text-muted-foreground/60"
         />
 
         <AnimatePresence>
           {!typing && raw !== "" ? (
             <motion.span
-              key="currency"
-              initial={reduce ? false : { opacity: 0, x: 4 }}
               animate={{ opacity: 1, x: 0 }}
+              className="pr-2 font-mono text-muted-foreground text-sm"
               exit={reduce ? undefined : { opacity: 0, x: 4 }}
+              initial={reduce ? false : { opacity: 0, x: 4 }}
+              key="currency"
               transition={{ duration: 0.2 }}
-              className="font-mono text-sm text-muted-foreground"
             >
               FCFA
             </motion.span>
@@ -116,23 +124,20 @@ export default function XofAmountInputExperiment() {
       </motion.div>
 
       <div
+        className="flex items-center justify-between text-muted-foreground text-xs"
         id="xof-help"
-        className="flex items-center justify-between text-xs text-muted-foreground"
       >
         <span>
           {digitCount} {digitCount === 1 ? "digit" : "digits"}
         </span>
         <span aria-live="polite">
-          {numeric !== null ? currencyFormatter.format(numeric) : ""}
+          {numeric === null ? "" : currencyFormatter.format(numeric)}
         </span>
       </div>
 
-      <button
-        type="submit"
-        className="self-start rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
-      >
+      <Button className="self-start" type="submit">
         Submit
-      </button>
+      </Button>
     </form>
   );
 }
