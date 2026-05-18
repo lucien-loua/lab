@@ -1,16 +1,15 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import type { Experiment } from "@/lib/experiments";
 
 export function BackLink({ href = "/" }: { href?: string }) {
   return (
-    <Link
-      className="inline-flex items-center gap-1.5 text-muted-foreground text-xs transition-colors hover:text-foreground"
-      href={href}
-    >
-      <ArrowLeftIcon className="size-3.5" weight="bold" /> back
-    </Link>
+    <Button render={<Link href={href} />} size="sm" variant="ghost">
+      <ArrowLeftIcon data-icon="inline-start" />
+      back
+    </Button>
   );
 }
 
