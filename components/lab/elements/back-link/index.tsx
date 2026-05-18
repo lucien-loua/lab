@@ -1,5 +1,5 @@
-import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { ArrowLeftIcon } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 
 export function BackLink({ href = "/" }: { href?: string }) {
