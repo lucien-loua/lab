@@ -1,19 +1,34 @@
-import { Button } from "@/components/ui/button"
+import { getAllExperiments } from "@/lib/experiments";
+import { ExperimentCard } from "@/components/lab/experiment-card";
 
-export default function Page() {
+export default async function HomePage() {
+  const experiments = await getAllExperiments();
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
-  )
+    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
+      <header className="mb-12 sm:mb-16">
+        <h1 className="font-mono text-lg font-medium tracking-tight">lab</h1>
+        <p className="mt-2 max-w-prose text-sm text-muted-foreground">
+          A sketchbook for UI experiments by{" "}
+          <a
+            className="underline underline-offset-4 hover:text-foreground"
+            href="https://github.com/lucien-loua"
+          >
+            Lucien Loua
+          </a>
+          . Micro-interactions, animations, view transitions.
+        </p>
+      </header>
+
+      <section aria-label="Experiments" className="flex flex-col gap-2">
+        {experiments.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No experiments yet.</p>
+        ) : (
+          experiments.map((exp) => (
+            <ExperimentCard key={exp.slug} experiment={exp} />
+          ))
+        )}
+      </section>
+    </main>
+  );
 }
