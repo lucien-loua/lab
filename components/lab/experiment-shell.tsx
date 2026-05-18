@@ -41,7 +41,7 @@ export function ExperimentShell({
           {experiment.tags.length > 0 ? (
             <span className="flex flex-wrap gap-1.5">
               {experiment.tags.map((t) => (
-                <Badge className="font-mono" key={t} variant="secondary">
+                <Badge key={t} variant="secondary">
                   {t}
                 </Badge>
               ))}

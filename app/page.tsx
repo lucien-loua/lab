@@ -1,8 +1,8 @@
 import { ExperimentCard } from "@/components/lab/experiment-card";
 import { getAllExperiments } from "@/lib/experiments";
 
-export default async function HomePage() {
-  const experiments = await getAllExperiments();
+export default function HomePage() {
+  const experiments = getAllExperiments();
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">

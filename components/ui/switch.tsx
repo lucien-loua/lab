@@ -22,7 +22,7 @@ function Switch({
       {...props}
     >
       <SwitchPrimitive.Thumb
-        className="pointer-events-none block rounded-full bg-background not-dark:bg-clip-padding shadow-sm ring-0 transition-transform data-checked:translate-x-[calc(100%-8px)] data-unchecked:translate-x-0 group-data-[size=default]/switch:h-4 group-data-[size=sm]/switch:h-3 group-data-[size=default]/switch:w-6 group-data-[size=sm]/switch:w-4 rtl:data-checked:-translate-x-[calc(100%-8px)] rtl:data-unchecked:-translate-x-0 dark:data-checked:bg-primary-foreground dark:data-unchecked:bg-foreground"
+        className="pointer-events-none block rounded-full bg-background not-dark:bg-clip-padding shadow-sm ring-0 transition-transform data-checked:translate-x-[calc(100%-8px)] data-unchecked:translate-x-0 group-data-[size=default]/switch:h-4 group-data-[size=sm]/switch:h-3 group-data-[size=default]/switch:w-6 group-data-[size=sm]/switch:w-4 rtl:data-checked:-translate-x-[calc(100%-8px)] rtl:data-unchecked:translate-x-0 dark:data-checked:bg-primary-foreground dark:data-unchecked:bg-foreground"
         data-slot="switch-thumb"
       />
     </SwitchPrimitive.Root>

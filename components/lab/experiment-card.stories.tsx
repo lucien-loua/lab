@@ -19,7 +19,6 @@ export const Shipped: Story = {
       tags: ["motion", "spring"],
       status: "shipped",
       summary: "Three spring presets side by side.",
-      hasNotes: true,
     },
   },
 };
@@ -33,7 +32,6 @@ export const Draft: Story = {
       tags: ["wip"],
       status: "draft",
       summary: "Still cooking.",
-      hasNotes: false,
     },
   },
 };

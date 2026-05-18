@@ -31,9 +31,7 @@ export function ExperimentCard({ experiment }: { experiment: Experiment }) {
         </span>
       </span>
       {experiment.status === "draft" ? (
-        <Badge className="font-mono text-[10px]" variant="outline">
-          draft
-        </Badge>
+        <Badge variant="outline">draft</Badge>
       ) : null}
     </Link>
   );
