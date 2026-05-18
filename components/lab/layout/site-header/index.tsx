@@ -1,5 +1,5 @@
+import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { GithubLogoIcon } from "@/components/icons";
 import { ThemeToggle } from "@/components/theme/toggle";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -17,7 +17,7 @@ export function SiteHeader() {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <GithubLogoIcon />
+          <GithubLogoIcon weight="duotone" />
         </a>
         <ThemeToggle />
       </nav>

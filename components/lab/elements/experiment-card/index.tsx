@@ -1,5 +1,5 @@
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { ArrowUpRightIcon } from "@/components/icons";
 import { Badge } from "@/components/ui/badge";
 import {
   Item,
@@ -31,7 +31,7 @@ export function ExperimentCard({ experiment }: { experiment: Experiment }) {
       <ItemContent>
         <ItemTitle>
           {experiment.title}
-          <ArrowUpRightIcon data-icon="inline-end" />
+          <ArrowUpRightIcon data-icon="inline-end" weight="duotone" />
         </ItemTitle>
         <ItemDescription>{experiment.summary}</ItemDescription>
       </ItemContent>
