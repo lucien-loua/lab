@@ -12,7 +12,7 @@ export function SiteHeader() {
       <nav className="flex items-center gap-1">
         <a
           aria-label="Open repository on GitHub"
-          className={buttonVariants({ variant: "ghost", size: "icon-sm" })}
+          className={buttonVariants({ variant: "ghost", size: "icon" })}
           href="https://github.com/lucien-loua/lab"
           rel="noopener noreferrer"
           target="_blank"

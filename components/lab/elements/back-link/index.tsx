@@ -4,10 +4,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 export function BackLink({ href = "/" }: { href?: string }) {
   return (
-    <Link
-      className={buttonVariants({ variant: "ghost", size: "sm" })}
-      href={href}
-    >
+    <Link className={buttonVariants({ variant: "ghost" })} href={href}>
       <ArrowLeftIcon data-icon="inline-start" />
       back
     </Link>

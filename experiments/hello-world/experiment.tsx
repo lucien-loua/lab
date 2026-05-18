@@ -19,9 +19,7 @@ export default function HelloWorldExperiment() {
       >
         {count}
       </motion.span>
-      <Button onClick={() => setCount((n) => n + 1)} size="sm">
-        Increment
-      </Button>
+      <Button onClick={() => setCount((n) => n + 1)}>Increment</Button>
     </div>
   );
 }

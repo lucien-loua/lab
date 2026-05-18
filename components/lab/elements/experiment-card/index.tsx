@@ -19,7 +19,7 @@ export function ExperimentCard({ experiment }: { experiment: Experiment }) {
   }).format(new Date(experiment.date));
 
   return (
-    <Item render={<Link href={`/lab/${experiment.slug}`} />} size="sm">
+    <Item render={<Link href={`/lab/${experiment.slug}`} />}>
       <ItemMedia>
         <time
           className="font-mono text-muted-foreground text-xs"

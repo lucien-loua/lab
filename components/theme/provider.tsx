@@ -2,6 +2,7 @@
 
 import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { useEffect } from "react";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 function ThemeProvider({
   children,
@@ -16,7 +17,7 @@ function ThemeProvider({
       {...props}
     >
       <ThemeHotkey />
-      {children}
+      <TooltipProvider delay={250}>{children}</TooltipProvider>
     </NextThemesProvider>
   );
 }
