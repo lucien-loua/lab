@@ -14,8 +14,8 @@ export default function HomePage() {
   return (
     <main className="mx-auto w-full max-w-3xl px-4 pt-8 pb-16 sm:px-6 sm:pt-12">
       <p className="mb-12 max-w-prose text-muted-foreground text-sm sm:mb-16">
-        A sketchbook for UI experiments by Lucien Loua. Micro-interactions,
-        animations, view transitions.
+        A sketchbook for UI experiments. Micro-interactions, animations, view
+        transitions.
       </p>
 
       <section aria-label="Experiments">
