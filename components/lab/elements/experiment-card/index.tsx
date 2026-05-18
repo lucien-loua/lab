@@ -31,7 +31,7 @@ export function ExperimentCard({ experiment }: { experiment: Experiment }) {
       <ItemContent>
         <ItemTitle>
           {experiment.title}
-          <ArrowUpRightIcon data-icon="inline-end" weight="duotone" />
+          <ArrowUpRightIcon data-icon="inline-end" />
         </ItemTitle>
         <ItemDescription>{experiment.summary}</ItemDescription>
       </ItemContent>

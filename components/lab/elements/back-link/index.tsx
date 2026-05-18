@@ -8,7 +8,7 @@ export function BackLink({ href = "/" }: { href?: string }) {
       className={buttonVariants({ variant: "ghost", size: "sm" })}
       href={href}
     >
-      <ArrowLeftIcon data-icon="inline-start" weight="duotone" />
+      <ArrowLeftIcon data-icon="inline-start" />
       back
     </Link>
   );

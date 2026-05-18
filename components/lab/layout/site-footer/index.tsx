@@ -1,3 +1,5 @@
+import { Kbd } from "@/components/ui/kbd";
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
@@ -11,9 +13,8 @@ export function SiteFooter() {
           Lucien Loua
         </a>
       </span>
-      <span className="font-mono">
-        <kbd className="rounded border bg-muted px-1.5 py-0.5">d</kbd> to toggle
-        theme
+      <span className="inline-flex items-center gap-1.5">
+        <Kbd>d</Kbd> to toggle theme
       </span>
     </footer>
   );
