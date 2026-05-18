@@ -1,7 +1,7 @@
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme/toggle";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -10,20 +10,15 @@ export function SiteHeader() {
         lab
       </Link>
       <nav className="flex items-center gap-1">
-        <Button
-          render={
-            <a
-              aria-label="Open repository on GitHub"
-              href="https://github.com/lucien-loua/lab"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <GithubLogoIcon />
-            </a>
-          }
-          size="icon-sm"
-          variant="ghost"
-        />
+        <a
+          aria-label="Open repository on GitHub"
+          className={buttonVariants({ variant: "ghost", size: "icon-sm" })}
+          href="https://github.com/lucien-loua/lab"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <GithubLogoIcon />
+        </a>
         <ThemeToggle />
       </nav>
     </header>
