@@ -23,12 +23,15 @@ bun run format      # ultracite fix
 
 ## Add a new experiment
 
-1. Create the folder and the component file:
+1. Create the folder, the component, and a story:
 
    ```
    experiments/<slug>/experiment.tsx
-   experiments/<slug>/notes.mdx   # optional writeup
+   experiments/<slug>/experiment.stories.tsx   # colocated story
+   experiments/<slug>/notes.mdx                # optional writeup
    ```
+
+   See [experiments/hello-world](experiments/hello-world) as the canonical example.
 
    Inside `experiment.tsx`:
 
@@ -57,7 +60,7 @@ bun run format      # ultracite fix
    };
    ```
 
-3. That's it. The home page picks it up, the dynamic route renders it, the static params include it.
+3. That's it. The home page picks it up, the dynamic route renders it, the static params include it, and Storybook discovers the story automatically.
 
 ## UI rules (read before adding)
 

@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
 export type ExperimentStatus = "draft" | "shipped";
@@ -15,15 +16,13 @@ export interface RegistryEntry extends ExperimentMetadata {
 }
 
 // Add a new experiment here. See README for the full guide.
-//
-// Example:
-//   import dynamic from "next/dynamic";
-//   "hello-world": {
-//     title: "Hello world",
-//     date: "2026-05-18",
-//     tags: ["starter"],
-//     status: "draft",
-//     summary: "A minimal first experiment.",
-//     Component: dynamic(() => import("./hello-world/experiment")),
-//   },
-export const REGISTRY: Record<string, RegistryEntry> = {};
+export const REGISTRY: Record<string, RegistryEntry> = {
+  "hello-world": {
+    title: "Hello world",
+    date: "2026-05-18",
+    tags: ["motion", "starter"],
+    status: "shipped",
+    summary: "A counter that animates on increment. Canonical starter.",
+    Component: dynamic(() => import("./hello-world/experiment")),
+  },
+};

@@ -5,6 +5,7 @@ import { ExperimentCard } from "./experiment-card";
 
 const SPRING_TOGGLE_NAME = /spring toggle/i;
 const DRAFT_LABEL = /^draft$/i;
+const MUTED_TOKEN = /muted token/i;
 
 const meta = {
   component: ExperimentCard,
@@ -74,5 +75,33 @@ export const InGroup: Story = {
       status: "shipped",
       summary: "Three spring presets side by side.",
     },
+  },
+};
+
+// Single CssCheck story for the whole project. Verifies that
+// ../app/globals.css is loaded in the Storybook preview by reading a
+// Tailwind v4 shadcn token from the rendered element.
+export const CssCheck: Story = {
+  tags: ["ai-generated", "css-check"],
+  args: {
+    experiment: {
+      slug: "css-check",
+      title: "css-check",
+      date: "2026-05-18",
+      tags: [],
+      status: "shipped",
+      summary: "Unused — render is overridden.",
+    },
+  },
+  render: () => (
+    <div className="rounded-md bg-muted px-3 py-2 text-muted-foreground text-sm">
+      muted token
+    </div>
+  ),
+  play: async ({ canvas }) => {
+    const el = canvas.getByText(MUTED_TOKEN);
+    const bg = window.getComputedStyle(el).backgroundColor;
+    await expect(bg).not.toBe("rgba(0, 0, 0, 0)");
+    await expect(bg).not.toBe("transparent");
   },
 };

@@ -27,7 +27,7 @@ export function ExperimentShell({
   }).format(new Date(experiment.date));
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+    <main className="mx-auto w-full max-w-3xl px-4 pt-4 pb-16 sm:px-6 sm:pt-8">
       <BackLink />
       <header className="mt-6 mb-10">
         <h1 className="font-medium text-xl tracking-tight">
