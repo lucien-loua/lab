@@ -11,7 +11,10 @@
       "linter": {
         "rules": {
           "performance": { "noNamespaceImport": "off" },
-          "a11y": { "noLabelWithoutControl": "off" },
+          "a11y": {
+            "noLabelWithoutControl": "off",
+            "useSemanticElements": "off"
+          },
           "style": { "useConsistentTypeDefinitions": "off" }
         }
       }

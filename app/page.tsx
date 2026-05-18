@@ -1,4 +1,11 @@
 import { ExperimentCard } from "@/components/lab/experiment-card";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { ItemGroup } from "@/components/ui/item";
 import { getAllExperiments } from "@/lib/experiments";
 
 export default function HomePage() {
@@ -20,13 +27,22 @@ export default function HomePage() {
         </p>
       </header>
 
-      <section aria-label="Experiments" className="flex flex-col gap-2">
+      <section aria-label="Experiments">
         {experiments.length === 0 ? (
-          <p className="text-muted-foreground text-sm">No experiments yet.</p>
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyTitle>No experiments yet</EmptyTitle>
+              <EmptyDescription>
+                Register one in experiments/registry.ts.
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         ) : (
-          experiments.map((exp) => (
-            <ExperimentCard experiment={exp} key={exp.slug} />
-          ))
+          <ItemGroup>
+            {experiments.map((exp) => (
+              <ExperimentCard experiment={exp} key={exp.slug} />
+            ))}
+          </ItemGroup>
         )}
       </section>
     </main>
