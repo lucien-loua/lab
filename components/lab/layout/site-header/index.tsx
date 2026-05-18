@@ -1,7 +1,7 @@
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme/toggle";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
 
 export function SiteHeader() {
   return (

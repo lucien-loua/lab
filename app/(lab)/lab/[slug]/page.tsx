@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { ExperimentShell } from "@/components/lab/experiment-shell";
+import { ExperimentShell } from "@/components/lab/elements/experiment-shell";
 import { REGISTRY } from "@/experiments/registry";
 import { experimentSlugs, getExperiment } from "@/lib/experiments";
 

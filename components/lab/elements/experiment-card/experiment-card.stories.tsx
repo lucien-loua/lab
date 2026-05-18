@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect } from "storybook/test";
 import { ItemGroup } from "@/components/ui/item";
-import { ExperimentCard } from "./experiment-card";
+import { ExperimentCard } from ".";
 
 const SPRING_TOGGLE_NAME = /spring toggle/i;
 const DRAFT_LABEL = /^draft$/i;
@@ -10,7 +10,7 @@ const MUTED_TOKEN = /muted token/i;
 const meta = {
   component: ExperimentCard,
   tags: ["ai-generated"],
-  title: "lab/ExperimentCard",
+  title: "lab/elements/ExperimentCard",
 } satisfies Meta<typeof ExperimentCard>;
 
 export default meta;

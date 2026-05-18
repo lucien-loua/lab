@@ -1,4 +1,4 @@
-import { ExperimentCard } from "@/components/lab/experiment-card";
+import { ExperimentCard } from "@/components/lab/elements/experiment-card";
 import {
   Empty,
   EmptyDescription,

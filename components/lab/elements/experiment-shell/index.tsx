@@ -1,17 +1,6 @@
-import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import type { Experiment } from "@/lib/experiments";
-
-export function BackLink({ href = "/" }: { href?: string }) {
-  return (
-    <Button render={<Link href={href} />} size="sm" variant="ghost">
-      <ArrowLeftIcon data-icon="inline-start" />
-      back
-    </Button>
-  );
-}
+import { BackLink } from "../back-link";
 
 export function ExperimentShell({
   experiment,

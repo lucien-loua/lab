@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { expect } from "storybook/test";
-import { ExperimentShell } from "./experiment-shell";
+import { ExperimentShell } from ".";
 
 const BACK_LABEL = /back/i;
 const TITLE_LABEL = /spring toggle/i;
@@ -9,7 +9,7 @@ const meta = {
   component: ExperimentShell,
   tags: ["ai-generated"],
   parameters: { layout: "fullscreen" },
-  title: "lab/ExperimentShell",
+  title: "lab/elements/ExperimentShell",
 } satisfies Meta<typeof ExperimentShell>;
 
 export default meta;

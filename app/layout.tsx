@@ -2,7 +2,7 @@ import { Geist_Mono, Inter } from "next/font/google";
 import { ViewTransition } from "react";
 
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/theme/provider";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });

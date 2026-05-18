@@ -1,5 +1,5 @@
-import { SiteFooter } from "@/components/lab/site-footer";
-import { SiteHeader } from "@/components/lab/site-header";
+import { SiteFooter } from "@/components/lab/layout/site-footer";
+import { SiteHeader } from "@/components/lab/layout/site-header";
 
 export default function LabLayout({ children }: { children: React.ReactNode }) {
   return (
